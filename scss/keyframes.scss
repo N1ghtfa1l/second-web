@@ -1,0 +1,40 @@
+@keyframes slide {
+    0% {
+        transform: translateX(-200%);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateX(120%);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+}
+@keyframes color {
+    0% {
+        transform: translateX(-200%);
+        color: inherit;
+    }
+    50% {
+        transform: translateX(120%);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+        color: white;
+    }
+
+}
+@keyframes expandBackground {
+    0% {
+        transform: scaleX(0);
+        
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}

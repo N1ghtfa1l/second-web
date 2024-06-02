@@ -1,0 +1,577 @@
+@import 'nule.scss';
+@import 'component.scss';
+@import 'keyframes.scss';
+
+.container {
+    margin: 0 auto;
+    width: 1430px;
+    padding: 0 15px;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    margin: 72px 0 0 0;
+    z-index: 100;
+}
+
+.header__inner {
+    width: 1040px;
+    height: 40px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+}
+
+.header__inner-cart {
+    position: relative;
+    display: flex;
+
+    .cart-counter {
+        position: absolute;
+        font-size: 14px;
+        top: -10px;
+        right: -10px;
+        background-color: #C7A17A;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+/* intro */
+.intro__inner {
+    height: 768px;
+    display: flex;
+    justify-content: end;
+    position: relative;
+
+}
+
+.intro__inner-menu {
+    background-color: #415167;
+    width: 330px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.menu__nav-title {
+    @extend %title;
+    color: white;
+}
+
+.intro__inner-li {
+    list-style: none;
+    margin: 30px 0 0 0;
+    @extend %desc;
+    color: white;
+    cursor: pointer;
+    animation: border 3s 1;
+    position: relative;
+}
+
+.intro__inner-li::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    /* Высота бордера */
+    background-color: red;
+    /* Цвет бордера */
+    transform: scaleX(0);
+    /* Начальное положение бордера */
+    transform-origin: bottom left;
+    /* Точка начала анимации */
+    transition: 0.5s;
+    /* Анимация */
+}
+
+.intro__inner-li:hover::after {
+    transform: scaleX(1);
+    /* Положение бордера при наведении */
+}
+
+.intro__inner-title {
+    position: absolute;
+    font-size: 54px;
+    line-height: 70px;
+    bottom: 10px;
+    left: 100px;
+    font-weight: 700;
+    color: #415167;
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+
+    p {
+        position: relative;
+        overflow: hidden;
+
+        &:nth-child(1) {
+            animation: slide 1.5s forwards;
+            animation-delay: 1s;
+            transform: translateX(-300%);
+        }
+
+        &:nth-child(2) {
+            animation: color 1.5s forwards;
+            animation-delay: 2s;
+            transform: translateX(-300%);
+            z-index: 1; // Это заставляет фон быть позади текста
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: $brown; // Используем цвет напрямую
+                z-index: -1;
+                transform: scaleX(0);
+                transform-origin: left;
+                animation: expandBackground 1.4s forwards;
+                animation-delay: 2.5s; // Задержка анимации фона
+            }
+        }
+
+        &:nth-child(3) {
+            animation: slide 1.5s forwards;
+            animation-delay: 1.5s;
+            transform: translateX(-300%);
+        }
+    }
+}
+
+
+/* info */
+.info {
+    margin: 250px 0 0 0;
+
+}
+
+.info__inner {
+    height: 390px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.info__inner-text {
+    text-align: center;
+    margin: 0 0 72px 0;
+    transform: translateY(100%);
+    transition: 1s;
+    opacity: 0;
+}
+
+.intro__inner__title {
+    @extend %sub_title;
+
+}
+
+.intro__inner__subtitle {
+    @extend %montserrat-bold;
+}
+
+.info__inner-desc {
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.info__inner-desc-cart {
+    width: 226px;
+    text-align: center
+}
+
+.desc-cart-title {
+    @extend %title;
+    margin: 41px 0 12px 0;
+}
+
+.desc-cart-subtitle {
+    @extend %desc;
+    width: 226px;
+}
+
+/* shop */
+
+.shop {
+    margin: 120px 0 0 0;
+    position: relative;
+
+}
+
+.shop__inner {
+    height: 894px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transform: translateY(10%);
+    opacity: 0;
+    transition: 1s;
+}
+
+.shop__inner-bg {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.shop__inner-text {
+    margin: 100px 0 72px 0;
+    text-align: center;
+}
+
+.shop__inner-title {
+    @extend %montserrat-bold;
+}
+
+.shop__inner-subtitle {
+    @extend %sub_title;
+}
+
+.shop__inner-slider {
+    display: flex;
+    gap: 0 30px;
+    align-self: start;
+    margin: 0 0 32px 0;
+    transition: 0.4s;
+    position: relative;
+}
+
+.shop__inner-slider__cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 1px black;
+    flex-shrink: 0;
+    &:hover {
+        box-shadow: 0 0 5px black;
+    }
+}
+
+.slider-glass {
+    width: 211px;
+    height: 551px;
+    position: absolute;
+    background-color: white;
+    right: 0;
+    top: 25%;
+    z-index: 1;
+    opacity: 0.7;
+}
+
+.slider__cart-img {
+    background-color: #EDF0F5
+}
+
+.slider__cart-desc {
+    padding: 42px;
+    width: 330px;
+    background: white
+}
+
+.slider__cart-desc-price {
+    @extend %sub_title;
+    color: #C7A17A;
+}
+
+.slider__cart-desc-title {
+    @extend %sub_title;
+    margin: 8px 0 0 0;
+}
+
+.slider__cart-desc-subtitle {
+    margin: 24px 0 18px 0;
+    height: 38px;
+}
+
+.slider__cart-desc-btns {
+    display: flex;
+    gap: 0 18px;
+}
+
+.slider__cart-desc-btn {
+    font-family: 'Nunito Sans';
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 21px;
+    border-radius: 20px;
+    padding: 5px 18px;
+    transition: 1s;
+
+    &:hover {
+        background-color: $brown;
+        color: white;
+    }
+}
+
+.slider-arrow {
+    position: absolute;
+    right: 0;
+    bottom: 40%;
+    background-color: $brown;
+    padding: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+}
+
+
+
+/* choose */
+
+.choose {
+    position: relative;
+}
+
+.choose__inner {
+    height: 802px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(10%);
+    opacity: 0;
+    transition: 1s;
+  
+}
+
+.choose__inner-bg {
+    width: 1076px;
+    height: 802px;
+    background-color: #EDF0F5;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.choose__inner-text {
+    margin: 0 0 66px 0;
+    text-align: center;
+}
+
+.choose__inner-text__subtitle {
+    @extend %sub_title;
+}
+
+.choose__inner-text__title {
+    @extend %montserrat-bold;
+}
+
+.choose__inner-cart-box {
+    display: flex;
+}
+
+.choose__inner-cart {
+    width: 884px;
+    height: 462px;
+    background-color: white;
+    box-shadow: 0 0 1px black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+}
+
+.choose__inner-cart-info {
+    width: 434px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 0 0 64px;
+
+}
+
+.choose__inner-price {
+    color: $brown;
+    @extend %sub_title;
+}
+
+.choose__inner-title {
+    @extend %title;
+    margin: 12px 0;
+}
+
+.choose__inner-desc {
+    @extend %desc;
+}
+
+.choose__inner-img {
+    display: flex;
+    justify-content: space-between;
+    margin: 24px 0 35px 0;
+}
+
+.choose__inner-img__box {
+    display: flex;
+    gap: 0 12px;
+}
+
+.choose__inner-img__box-text {
+    @extend %desc;
+}
+
+.choose__inner-img__box-subtext {
+    font-family: 'Nunito Sans';
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+}
+
+.choose__inner-cart-info-img {
+    position: absolute;
+    left: -30%;
+    top: 13%;
+    
+}
+.img--green {
+    filter: hue-rotate(112deg) saturate(50%);
+}
+.img--blue {
+    filter: hue-rotate(177deg);;
+}
+
+.choose__inner-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.choose__inner-right-btn {
+    @extend %montserrat-bold;
+    padding: 60px 38px;
+    background-color: white;
+    box-shadow: 0 0 1px black;
+}
+.choose-btn {
+    background: #dfd9d9;
+}
+
+/* combo */
+
+.combo {
+    position: relative;
+}
+.combo__inner {
+    height: 906px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    transform: translateY(10%);
+    opacity: 0;
+    transition: 1s;
+}
+.combo__inner-text {
+    text-align: center;
+    margin: 0 0 64px 0
+}
+.combo__inner-slider-box {
+    display: flex;
+    gap: 0 30px;
+    align-self: start;
+
+}
+.combo-slider-arrow {
+    position: absolute;
+    right: 0;
+    bottom: 40%;
+    background-color: $brown;
+    padding: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 4;
+}
+.combo__inner-text__subtitle {
+    @extend %sub_title;
+}
+.combo__inner-text__title {
+    @extend %title;
+}
+.combo-bg {
+    width: 830px;
+    height: 906px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #415167;
+    z-index: -1;
+}
+.slider__info-price {
+    @extend %sub_title;
+    color: $brown;
+}
+.combo__inner-slider {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: start;
+    box-shadow: 0 0 1px black;
+    transition: 1s;
+}
+.combo__inner-slider__info {
+    width: 360px;
+    height: 262px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    padding: 40px
+}
+.slider__info-title {
+    @extend %title;
+    margin: 10px 0;
+}
+.slider__info-subtitle {
+    @extend %desc;
+    margin: 0 0 32px 0;
+}
+
+/* footer */
+.footer {
+    background-color: #EDF0F5;
+}
+ .footer__inner {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+ }
+ .footer__inner-text {
+    @extend %desc;
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+.element-show {
+    transform: translateY(0%);
+    opacity: 1;
+}
